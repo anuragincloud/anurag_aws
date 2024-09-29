@@ -1,0 +1,24 @@
+import json
+
+def lambda_handler(event, context):
+    """
+    Lambda function to process SQS messages.
+    :param event: Contains the SQS message details
+    :param context: Contains runtime information
+    """
+    
+    # Loop through all records in the event
+    for record in event['Records']:
+        # Get the body of the SQS message
+        sqs_message = record['body']
+        
+        # Process the message (for example, you can parse the JSON body if needed)
+        print(f"Received SQS message: {sqs_message}")
+        
+        # Perform any other necessary processing here
+        # For example, you could store the message in a database, invoke other services, etc.
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Successfully processed SQS message')
+    }
