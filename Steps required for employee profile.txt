@@ -1,0 +1,12 @@
+Steps required for employee profile project:
+
+1. create an ec2 instance (ubuntu ami)
+2. create an rds database instance
+ 
+   - username : admin
+   - password :Admin123
+   - database name : projectdb
+3. deployed an bucket in s3 service (public bucket)
+4. create an dynamodb table:
+     - table name : employee
+     - partition key : emp_id (Number)

@@ -1,0 +1,18 @@
+Policy generator:
+
+Select Type of Policy: s3 bucket policy
+Effect: allow
+Principal: *
+Actions: GetObject
+Amazon Resource Name (ARN) : arnofyourbucket/*
+
+Add Statement
+Generate Policy
+
+
+Storage Class:
+1. Standard
+2. Standard IA
+3. One Zone IA
+4. Glacier
+5. Glacier Deep Archive

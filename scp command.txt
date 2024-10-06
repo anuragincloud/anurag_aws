@@ -1,0 +1,5 @@
+scp -i "anuj-kp-n.v.pem" "linux-cmds-cloud.txt" ubuntu@100.27.188.8:/home/ubuntu
+
+--------------------------------------------------------------------------------
+
+scp -i "path_to_kepair_file/file.pem" "path_to_local_file/file.txt" ubuntu@100.27.188.8:/home/ubuntu

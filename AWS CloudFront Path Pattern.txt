@@ -1,0 +1,76 @@
+AWS CloudFront Path Pattern:
+
+In AWS CloudFront, a "Path Pattern" is a key component of cache behavior settings. It allows you to define how CloudFront handles different types of requests by matching specific URL patterns and routing them to appropriate origins. This enables fine-grained control over how different kinds of content are cached and served.
+
+What is a Path Pattern?
+A path pattern is a string that specifies a pattern for the URLs of the requests that you want CloudFront to handle in a specific way. Path patterns are used to:
+
+Match URLs: Determine which requests match the pattern and apply the corresponding cache behavior settings.
+Route to Origins: Route requests matching the path pattern to the appropriate origin server.
+How Path Patterns Work
+Wildcards: Path patterns can include wildcards. For example:
+
+*.jpg matches all JPEG image files.
+/images/* matches all files in the /images/ directory.
+/api/* matches all API requests that start with /api/.
+Order of Evaluation: Path patterns are evaluated in the order they are listed. CloudFront uses the first pattern that matches the URL of the request.
+
+Example Path Patterns and Cache Behaviors
+Here are some example path patterns and their typical uses in cache behaviors:
+
+Static Content:
+
+Path Pattern: *.jpg, *.png, *.css, *.js
+Cache Behavior: Long TTL (time-to-live) to cache static assets like images, stylesheets, and JavaScript files for a long time.
+Origin: An Amazon S3 bucket configured to store static assets.
+Dynamic Content:
+
+Path Pattern: /api/*
+Cache Behavior: Short TTL or no caching, since dynamic content can change frequently.
+Origin: An Amazon EC2 instance or a load balancer that handles API requests.
+HTML Pages:
+
+Path Pattern: *.html
+Cache Behavior: Medium TTL, as HTML pages may change more frequently than static assets but less frequently than dynamic content.
+Origin: An Amazon S3 bucket for static websites or a web server for dynamic content.
+Default Behavior:
+
+Path Pattern: Default (*)
+Cache Behavior: Applies to all requests that do not match any of the other specified path patterns.
+Origin: Typically a primary origin like an Amazon S3 bucket or a web server.
+Configuring Path Patterns
+Create or Update Cache Behaviors:
+
+When creating or updating a CloudFront distribution, you define cache behaviors and specify the path patterns for each behavior.
+Order Matters:
+
+Arrange path patterns from most specific to most general. For example, place /images/* before *.jpg if you want /images/* to be evaluated first.
+Behavior Settings:
+
+For each path pattern, configure cache settings such as TTL, forwarding of headers, query strings, and cookies.
+Specify the origin that CloudFront should use when the path pattern matches.
+Example Configuration
+Imagine you have a website with the following structure:
+
+/images/ for storing images
+/api/ for API endpoints
+/ for HTML files
+You might configure CloudFront path patterns and cache behaviors as follows:
+
+Path Pattern: /images/*
+
+Origin: mybucket.s3.amazonaws.com
+Cache TTL: Long
+Path Pattern: /api/*
+
+Origin: api.example.com
+Cache TTL: Short or none
+Path Pattern: *.html
+
+Origin: mybucket.s3.amazonaws.com
+Cache TTL: Medium
+Default Path Pattern: *
+
+Origin: mybucket.s3.amazonaws.com
+Cache TTL: Medium
+By using path patterns effectively, you can optimize content delivery, ensure efficient caching, and improve overall performance and responsiveness of your applications.

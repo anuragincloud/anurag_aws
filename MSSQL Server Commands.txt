@@ -1,0 +1,43 @@
+Install SQL Server:
+
+sudo apt-get update
+sudo apt-get install -y curl gnupg
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+sudo apt-get update
+sudo ACCEPT_EULA=Y apt-get install -y mssql-server
+
+-----------------------------------------------------------------------------
+After installation, configure SQL Server:
+
+sudo /opt/mssql/bin/mssql-conf setup
+
+---------------------------------------------------------------------------
+
+Install SQL Server Command-Line Tools:
+
+sudo ACCEPT_EULA=Y apt-get install -y mssql-tools
+
+----------------------------------------------------------------------------
+
+
+sqlcmd -S "mysql-endpoint" -U "username" -P "password"
+
+-- Show databases
+SELECT name FROM sys.databases;
+
+-- Use the database
+USE intel;
+
+-- Create table
+CREATE TABLE data (
+    firstname NVARCHAR(30),
+    email NVARCHAR(30)
+);
+
+-- Insert data
+INSERT INTO data (firstname, email) VALUES ('aws', 'aws@gmail.com');
+
+-- Select data
+SELECT * FROM data;
+

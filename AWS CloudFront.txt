@@ -1,0 +1,10 @@
+AWS CloudFront:
+
+1. Origin Domain:
+
+In AWS CloudFront, the "origin" is the source server or storage location from which CloudFront retrieves the original versions of your content that it caches at its edge locations. The "origin domain" specifically refers to the domain name or the endpoint address of this source. This is where CloudFront will fetch your content when it needs to be retrieved, either because the content is not yet cached at an edge location or because the cached content has expired and needs to be refreshed.
+
+Types of Origins:
+Amazon S3 Bucket
+Custom Origin (HTTP Server)
+AWS Media Services

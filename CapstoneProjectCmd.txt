@@ -1,0 +1,63 @@
+TableName=employee
+empid:emp_id
+
+TO CLONE THE GITHUB-REPO
+
+git clone https://github.com/Training-demo/aws-code-main
+
+sudo su
+cd aws-code-main
+ls
+sudo nano config.py
+
+customhost="endpoint of the rds"
+customuser="admin"
+custompass="admin123"
+customdb="project"
+custombucket="s3-bucket-name"
+customregion="us-west-2"
+
+sudo nano EmpApp.py
+--->>>> try region name --->>> dynamodb--->name
+
+85th line
+
+ try:
+                dynamodb_client = boto3.client('dynamodb', region_name='us-west-2')
+                dynamodb_client.put_item(
+                 TableName='employee',
+                    Item={
+                     'emp_id': {
+                          'N': emp_id
+                      },
+                      'image_url': {
+                            'S': object_url
+                        }
+                    }
+                )
+
+
+TO DOWNLOAD ALL DEPENDENCY
+
+sudo apt-get install python3
+sudo apt-get install python3-flask
+sudo apt-get install python3-pymysql
+sudo apt-get install python3-boto3
+sudo python3 EmpApp.py
+
+IAM ROLE 
+1.CREATE POLICY--->>>RDS,S3,DYNAMODB FULL ACCESS. .
+  ROLE NAME-->PROJECT-ROLE-1--CREATE ROLE.
+  APPLICATION-TIER-IAM_MODIFY-ATTACH.
+
+
+sudo apt-get install mysql-server -y
+sudo apt-get install mysql-client
+sudo mysql -h endpoint -u admin -padmin123
+show databases;
+use projectdb;
+show tables;
+create table employee(emp_id varchar(20),first_name varchar(20),last_name varchar(20),primary_skills varchar(20),location varchar(20));
+select * from employee;
+insert into employee values(1,"Sai","Nathya","AWS","Cuttack");
+

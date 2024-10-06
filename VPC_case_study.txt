@@ -1,0 +1,89 @@
+1.Create Production VPC (cidr - 10.10.0.0/16)
+
+2. Create 5 Subnets in it
+- web subnet [public] (cidr - 10.10.1.0/24)
+- app1 subnet [private] (cidr - 10.10.2.0/24)
+- app2 subnet [private] (cidr - 10.10.3.0/24)
+- db subnet [private] (cidr - 10.10.4.0/24)
+- dbcache subnet [private] (cidr - 10.10.5.0/24)
+
+- Select web subnet > Go to Action > Edit Subnet setting > Enable Auto Assign IPv4.
+
+4. Create Internet Gateway (Prod-IGW) and attach it to Prod VPC. 
+
+3. Create Public Route Table 
+    - edit routes
+    - destination - 0.0.0.0/0
+    - target - internet gateway (Prod-IGW)
+    - subnet association - web subnet
+
+5. Create NAT Gateway [in web subnet] (Prod-NAT)
+
+6. Create Private Route Table
+    - edit routes
+    - destination - 0.0.0.0/0
+    - target - nat gateway (Prod-NAT)
+    - subnet association - app1 subnet and dbcache subnet
+
+7. Launch ec2 instances in all subnets of Production VPC and name them as per name of your subnets.
+
+8. Connect to your web instance and check the internet connectivity ( ping google.com )
+
+9. Connect to your app1/dbcache instance and check the internet connectivity [ connect by bastion/jump server method ]  ( ping google.com ) 
+
+Note - make sure in the security group of the resources enabled ALL TRAFFIC from ANYWHERE source.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+1.Create Development VPC (cidr - 20.20.0.0/16)
+
+2. Create 2 Subnets in it
+- web2 subnet [public] (cidr - 20.20.1.0/24)
+- db2 subnet [private] (cidr - 20.20.2.0/24)
+
+- Select web2 subnet > Go to Action > Edit Subnet setting > Enable Auto Assign IPv4.
+
+4. Create Internet Gateway (Dev-IGW) and attach it to Dev VPC. 
+
+3. Create Public Route Table 
+    - edit routes
+    - destination - 0.0.0.0/0
+    - target - internet gateway (Dev-IGW)
+    - subnet association - web2 subnet
+
+4. Launch ec2 instances in all subnets of Development VPC and name them as per name of your subnets.
+
+5. Connect to your web2 instance and check the internet connectivity ( ping google.com )
+
+Note - make sure in the security group of the resources enabled ALL TRAFFIC from ANYWHERE source.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+1. Create Peering connection (PROD_DEV_PEER) between Production VPC and Development VPC, also accept the peering request.
+
+2. Create 2 Route Tables-
+
+a. Prod-Dev-Peer-RT and attach to Production VPC.
+   - edit the routes
+   - destination -  20.20.2.0/24  [ cidr of db2 subnet of dev network ]
+   - target - peering connection  (PROD_DEV_PEER)
+   - subnet association - db subnet
+
+b. Dev-Prod-Peer-RT and attach to Development VPC.
+   - edit the routes
+   - destination -  10.10.4.0/24  [ cidr of db subnet of prod network ]
+   - target - peering connection  (PROD_DEV_PEER)
+   - subnet association - db2 subnet
+
+3. Then connect to your db instance and then ping private ip of db2 instance ( you will be able to see the network packet transfer)
+
+Note - make sure in the security group of the resources enabled ALL TRAFFIC from ANYWHERE source.
+
+
+
+ 
+
+
+
+
+

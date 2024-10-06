@@ -1,0 +1,27 @@
+    --  sudo apt-get update
+    --  sudo apt-get install apache2 -y
+    --  cd /var/www/html
+    --  ls
+    --  sudo rm index.html
+    --  ls
+    --  sudo apt-get install git
+    --  git clone https://github.com/awsvishwas/awsproject1.git
+    --  sudo git clone https://github.com/awsvishwas/awsproject1.git
+    --  cd
+    --  sudo mv /home/ubuntu/awsproject1/* /var/www/html/
+    --  ls
+    --  ls awsproject1/
+    --  cd /var/www/html
+    --  ls
+
+
+------------------------------------------------------------------------------
+
+
+-sudo apt-get update -y
+-sudo apt-get install apache2 -y
+-git clone https://github.com/Training-Demo/AWS-Project-1.git
+-cd AWS-Project-1
+-sudo mv * /var/www/html
+-cd /var/www/html
+-sudo rm index.html

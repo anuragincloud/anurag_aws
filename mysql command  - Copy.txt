@@ -1,0 +1,9 @@
+mysql command :
+
+for amazon-linux-2023:   sudo dnf install mariadb105
+
+for amazon-linux-2: sudo yum install mariadb
+
+for ubuntu os: sudo apt install mysql-client
+               sudo apt install mysql-server
+               sudo apt install mariadb-server

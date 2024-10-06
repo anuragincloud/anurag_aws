@@ -1,0 +1,10 @@
+# Install stress on Ubuntu/Debian
+sudo apt-get update
+sudo apt-get install stress
+
+# Install stress on CentOS/RHEL
+sudo yum install stress
+
+
+# Run stress to load all CPUs for 60 seconds
+stress --cpu 8 --timeout 60s

@@ -1,0 +1,26 @@
+------
+
+script for LINUX machine (amazon Linux 2023)
+
+------
+
+#!/bin/bash
+sudo su
+yum update -y
+yum install -y nginx
+systemctl start nginx
+systemctl enable nginx
+rm /usr/share/nginx/html/index.html
+echo "hello world" > /usr/share/nginx/html/index.html
+
+
+--------------
+
+#!/bin/bash
+sudo su
+yum update -y
+yum install -y nginx
+systemctl start nginx
+systemctl enable nginx
+rm /usr/share/nginx/html/index.html
+echo "Hello World from $(hostname -f)" > /usr/share/nginx/html/index.html

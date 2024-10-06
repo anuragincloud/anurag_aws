@@ -1,0 +1,9 @@
+user data script for UBUNTU:
+
+----------
+
+#!/bin/bash
+sudo su
+apt-get update
+apt-get install nginx -y
+echo "hello world" > /var/www/html/index.html

@@ -1,0 +1,31 @@
+{
+	"Version": "2008-10-17",
+	"Statement": [
+		{
+			"Sid": "eb-af163bf3-d27b-4712-b795-d1e33e331ca4",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "AROA2Q4ACEECBLNY3TOOC"
+			},
+			"Action": [
+				"s3:ListBucket",
+				"s3:ListBucketVersions",
+				"s3:GetObject",
+				"s3:GetObjectVersion"
+			],
+			"Resource": [
+				"arn:aws:s3:::elasticbeanstalk-us-east-1-723433693444",
+				"arn:aws:s3:::elasticbeanstalk-us-east-1-723433693444/resources/environments/*"
+			]
+		},
+		{
+			"Sid": "eb-58950a8c-feb6-11e2-89e0-0800277d041b",
+			"Effect": "Deny",
+			"Principal": {
+				"AWS": "*"
+			},
+			"Action": "s3:DeleteBucket",
+			"Resource": "arn:aws:s3:::elasticbeanstalk-us-east-1-723433693444"
+		}
+	]
+}

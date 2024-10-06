@@ -1,0 +1,34 @@
+commands for Amazon-Linux-2 ami:
+
+sudo yum update
+sudo yum install nginx -y
+cd /usr/share/nginx/html/index.html
+sudo rm index.html
+sudo nano index.php
+copy and paste the php code
+ctrl+s
+ctrl+x
+
+---------------------------------------------------------------------
+commands for RDS(Amzon-linux-2):
+sudo yum install mariadb
+
+sudo mysql -h "mysql-endpoint" -u "username" -p
+password
+show databases;
+use intel;
+create table data(firstname varchar(30), email varchar(30));
+insert into data values("aws","aws@gmail.com");
+select * from data;
+
+--------------------------------------------------------------------
+commands for libraries:
+
+1.Enable the Remi repository:
+sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+sudo dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+sudo dnf module reset php
+sudo dnf module enable php:remi-8.0
+
+2.Install PHP:
+sudo dnf install -y php php-cli php-fpm php-mysqlnd

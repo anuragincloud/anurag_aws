@@ -1,0 +1,13 @@
+Ubuntu:
+
+sudo apt-get update
+sudo apt-get install nfs-common -y
+sudo mkdir efs
+
+Amazon Linux/Red Hat:
+
+sudo yum update
+sudo yum install nfs-utils -y
+sudo mkdir efs
+
+Then mount the efs command using nfs-client command

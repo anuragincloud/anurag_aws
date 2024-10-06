@@ -1,0 +1,19 @@
+Create an Redshift cluster
+
+Create an IAM Role for the cluster
+
+Create an S3 bucket to load the data into cluster
+
+Use query data v2 to query the data:
+
+1. connect to cluster
+2. create an table, and load the sample data - csv file
+3. load the data into  this table
+4. query the data
+
+
+SELECT * FROM "dev"."public"."anuj_table";
+
+
+
+data warehouse docs : https://www.oracle.com/in/database/what-is-a-data-warehouse/

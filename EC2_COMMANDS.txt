@@ -1,0 +1,21 @@
+For Ubuntu:
+    1  sudo apt-get update
+    2  sudo apt-get install nginx
+    3  y
+    4  cd /var/www/html
+    5  ls
+    6  sudo rm index.nginx-debian.html
+    7  ls
+    8  sudo nano index.html
+    9  sudo cat index.html
+   10  sudo nano index.html
+   11  history
+
+---------------------------------------
+
+For linux:
+sudo yum update
+sudo yum install nginx -y
+
+scp -i /path/to/private_key /path/to/local/file username@ec2_instance_public_dns:/path/to/destination
+pscp C:\path\to\file.txt username@linux_machine_ip:/path/on/linux

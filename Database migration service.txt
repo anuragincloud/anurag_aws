@@ -1,0 +1,7 @@
+sudo apt-get install postgresql
+psql --host=endpoint --port=5432 --dbname=postgres --username=postgres
+show search_path;
+**check the schema of table in DMS Service**
+SET search_path TO "database1";
+\dt
+SELECT table_name FROM information_schema.tables WHERE table_schema = 'database1';
